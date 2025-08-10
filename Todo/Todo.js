@@ -7,7 +7,7 @@ const loadCookies = () => {
     cookies.forEach(cookie => {
         const [key, value] = cookie.split('=');
         const listItem = document.createElement('li');
-        listItem.textContent = `${key}: ${value}`;
+        listItem.textContent = `${value}`;
         cookieList.appendChild(listItem);
     });
 };
