@@ -2,9 +2,52 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダー</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #333;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-  <h1>ゼロからウェブデザインを勉強しよう！</h1>
-  <p>まずはHTMLについて学びましょう</p>
+  <h1>カレンダー</h1>
+  <div id="calendar"></div>
+  <script>
+    function createCalendar(year, month) {
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const firstDay = new Date(year, month, 1).getDay();
+      let calendarHTML = "<table><tr>";
+
+      const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+      weekdays.forEach(day => calendarHTML += `<th>${day}</th>`);
+      calendarHTML += "</tr><tr>";
+
+      for (let i = 0; i < firstDay; i++) {
+        calendarHTML += "<td></td>";
+      }
+
+      for (let date = 1; date <= daysInMonth; date++) {
+        calendarHTML += `<td>${date}</td>`;
+        if ((date + firstDay) % 7 === 0) {
+          calendarHTML += "</tr><tr>";
+        }
+      }
+
+      calendarHTML += "</tr></table>";
+      document.getElementById("calendar").innerHTML = calendarHTML;
+    }
+
+    const today = new Date();
+    createCalendar(today.getFullYear(), today.getMonth());
+  </script>
 </body>
