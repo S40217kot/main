@@ -1,6 +1,9 @@
 const cookieForm = document.getElementById('cookie-form');
 const cookieList = document.getElementById('cookie-list');
 
+if (coolieList == None)
+    const coolieList = "Todoデータがありません。↑から追加してください。";
+
 const loadCookies = () => {
     const cookies = document.cookie.split('; ');
     cookieList.innerHTML = '';
