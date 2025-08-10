@@ -19,6 +19,6 @@ loadCookies();
 cookieForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const input = document.getElementById('cookie-input').value;
-    document.cookie = `data=${input}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    document.cookie = `data=$cookie-list={input}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
     loadCookies();
 });
